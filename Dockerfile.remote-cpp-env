@@ -46,8 +46,9 @@ RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.15.0/bazeli
 
 # Download some of the other tools that you explicitly need...
 
-RUN mkdir /workspace
+RUN mkdir -p /workspace && echo "6.0.0" > /workspace/.bazelversion
 WORKDIR /workspace
+RUN cat /workspace/.bazelversion
 
 
 RUN ( \

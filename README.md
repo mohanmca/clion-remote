@@ -6,10 +6,11 @@ Reference Dockerfile to get started with Docker or Remote toolchain in CLion.
 Read more in CLion [Blog](https://blog.jetbrains.com/clion/2020/01/using-docker-with-clion/#major-updates)
 
 ## How to build and run
-1. docker build --platform linux/amd64  -t clion/remote-cpp-env:0.5 -f Dockerfile.remote-cpp-env .
-2. docker run --platform linux/amd64 -d --cap-add sys_ptrace -p127.0.0.1:2222:22 --name clion_remote_env clion/remote-cpp-env:0.5
-3. ssh -p 2222 user@localhost
-
+1. docker stop clion_remote_env && docker rm clion_remote_env
+2. docker build --platform linux/amd64  -t clion/remote-cpp-env:0.5 -f Dockerfile.remote-cpp-env .
+3. docker run --platform linux/amd64 -d --cap-add sys_ptrace -p127.0.0.1:2222:22 --name clion_remote_env clion/remote-cpp-env:0.5
+4. ssh -p 2222 user@localhost
+5. cd /workspace  && bazelisk build //...
 
 ## What I learnt
 1. yes command used when creating new user in Dockerfile, since echo would display once, wheras yes would keep on displaying the same message.
