@@ -11,6 +11,7 @@ Read more in CLion [Blog](https://blog.jetbrains.com/clion/2020/01/using-docker-
 3. docker run --platform linux/amd64 -d --cap-add sys_ptrace -p127.0.0.1:2222:22 --name clion_remote_env clion/remote-cpp-env:0.5
 4. ssh -p 2222 user@localhost
 5. cd /workspace  && bazelisk build //...
+6. alias docker-login-remote-cpp-env="docker exec -it \$(docker images | grep cpp-env | awk '{print $3}') /bin/bash"
 
 ## What I learnt
 1. yes command used when creating new user in Dockerfile, since echo would display once, wheras yes would keep on displaying the same message.
