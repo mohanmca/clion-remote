@@ -24,4 +24,7 @@ RUN apt-get update \
       tar \
       python \
       python-dev \
+      libgrpc++-dev \
+      libprotobuf-dev \
+      protobuf-compiler-grpc \
   && apt-get clean
