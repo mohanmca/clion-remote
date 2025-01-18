@@ -11,7 +11,7 @@
 # ssh credentials (test user):
 #   user@password 
 
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 RUN DEBIAN_FRONTEND="noninteractive" apt-get update && apt-get -y install tzdata
 
@@ -31,8 +31,24 @@ RUN apt-get update \
       dos2unix \
       rsync \
       tar \
-      python \
+      python3 \
+      zip \
+      unzip \
+      wget \
   && apt-get clean
+
+RUN apt-get update \
+  && apt-get full-upgrade -y
+
+RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.15.0/bazelisk-linux-amd64 && \
+    chmod 755 bazelisk-linux-amd64 && \
+    mv bazelisk-linux-amd64 /usr/bin/bazelisk
+
+# Download some of the other tools that you explicitly need...
+
+RUN mkdir /workspace
+WORKDIR /workspace
+
 
 RUN ( \
     echo 'LogLevel DEBUG2'; \
