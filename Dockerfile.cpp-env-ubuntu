@@ -24,6 +24,7 @@ RUN apt-get update \
       tar \
       python \
       python-dev \
+      pkg-config \
       libgrpc++-dev \
       libprotobuf-dev \
       protobuf-compiler-grpc \
