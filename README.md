@@ -6,8 +6,8 @@ Reference Dockerfile to get started with Docker or Remote toolchain in CLion.
 Read more in CLion [Blog](https://blog.jetbrains.com/clion/2020/01/using-docker-with-clion/#major-updates)
 
 ## How to build and run
-1. docker build -t clion/remote-cpp-env:0.5 -f Dockerfile.remote-cpp-env .
-2. docker run -d --cap-add sys_ptrace -p127.0.0.1:2222:22 --name clion_remote_env clion/remote-cpp-env:0.5
+1. docker build --platform linux/amd64  -t clion/remote-cpp-env:0.5 -f Dockerfile.remote-cpp-env .
+2. docker run --platform linux/amd64 -d --cap-add sys_ptrace -p127.0.0.1:2222:22 --name clion_remote_env clion/remote-cpp-env:0.5
 3. ssh -p 2222 user@localhost
 
 
